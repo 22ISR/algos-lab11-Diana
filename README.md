@@ -112,3 +112,20 @@ movies = [
 for movie in movies:
     print(f"🎬 {movie['Title']} ({movie['Year']})")
 ```
+
+
+import requests
+API_KEY = "505480d7"
+BASE_URL = "https://www.omdbapi.com/"
+
+def search_movies(title):
+    params =  {"apikey": API_KEY, "s": title}
+    try:
+        response = requests.get(BASE_URL, params=params)
+        response.raise_for_status()
+        data = response.json()
+        if data.get("Respone") == "True":
+            return data["Swarch"]
+        else:
+            print
+main()
