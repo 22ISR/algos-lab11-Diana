@@ -129,3 +129,49 @@ def search_movies(title):
         else:
             print
 main()
+# import requests
+# API_KEY = "505480d7"
+# BASE_URL = "https://www.omdbapi.com/"
+
+# def search_movies(title):
+#     params =  {"apikey": API_KEY, "s": title}
+#     try:
+#         response = requests.get(BASE_URL, params=params)
+#         response.raise_for_status()
+#         data = response.json()
+#         if data.get("Respone") == "True":
+#             return data["Swarch"]
+#         else:
+#             print
+# main()
+
+# import requests
+
+# api_url = "https://www.omdbapi.com/"
+# response = requests.get(api_url)
+# if response.status_code == 200:
+#     print("Запрос выполнен успешно!")
+# else:
+#     print("Ошибка запроса:", response.status_code)
+
+# data = response.json()
+# print(data)
+# print(f"Имя: {data['name']}")
+
+import requests
+import json
+
+api_url = "https://www.omdbapi.com/"
+
+def movie_data(movie_title):
+    api_key = "505480d7"
+    api_url = "https://www.omdbapi.com/"
+
+params { "s": movie_title, "apikey": api_key }
+
+response = requests.get(base_urs, params=params)
+if response.status_code == 200:
+    return = response.json()
+else:
+    return None
+
