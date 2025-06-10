@@ -1,0 +1,38 @@
+import requests
+
+API_KEY = "505480d7"
+BASE_URL = "http://www.omdbapi.com/"
+
+def search_movies(title):
+    params = {
+        "apikey": API_KEY,
+        "s": title
+    }
+    try:
+        response = requests.get(BASE_URL, params=params)
+        response.raise_for_status()
+        data = response.json()
+        if data.get("Response") == "True":
+            return data["Search"]
+        else:
+            print("No movies found.")
+            return []
+    except requests.RequestException as e:
+        print(f"Error: {e}")
+        return []
+
+def main():
+    while True:
+        command = input("Enter movie name (or 'exit' to quit): ")
+        if command.lower() == "exit":
+            print("Goodbye!")
+            break
+        movies = search_movies(command)
+        for movie in movies:
+            title = movie.get("Title", "Unknown")
+            year = movie.get("Year", "Unknown")
+            mtype = movie.get("Type", "Unknown")
+            print(f"🎬 {title} ({year}) [{mtype}]")
+
+if __name__ == "__main__":
+    main()
